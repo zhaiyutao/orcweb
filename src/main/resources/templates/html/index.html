@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="Content-Type"
+	content="multipart/form-data;  charset=utf-8" />
+<title>图文识别</title>
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/picUpload.js"></script>
+</head>
+<style>
+input[type="file"] {
+  color: transparent;
+}
+.test1{
+  color:green;
+  font-family:'微软不雅黑','微软雅黑','黑体',sans-serif;
+}
+</style>
+<body>
+	<div class="container">
+		<div class="jumbotron">
+			<h1>图片识别</h1>
+			<p>这个程序很low,请尽量截图时截取有用的信息 </p>
+		</div>
+		<div class="row">
+			<div class="col">
+				<h2>图片展示区</h3>
+					<form method="POST" enctype="multipart/form-data" action="/upload" onsubmit="return check(this)" id="formInput">
+						<p><input type="file" name="file" id="xdaTanFileImg" onchange="xmTanUploadImg(this)" /></p>
+						<h2>图片上传前预览：</h2>
+						<div style="border: 2px dashed red;">
+							<img id="xmTanImg" name="pic" class="img-fluid" />
+							<div id="xmTanDiv"></div>
+						</div>
+						<input type="hidden" name="srcValue" th:value="${srcValue}" id='srcValue' /> 
+						<br/>
+						<input class="btn btn-primary" type="submit" value="上传" />
+					</form>
+					<hr/>
+			</div>
+			<div class="col" >
+				<h2 class="test1">复制前请务必仔细核对</h2>
+				<div id='returnDiv' style="border: 2px dashed green">
+					<span th:text="${returnValue}"  style="font-size:25px"></span>
+					<input type="hidden" th:value="${fileName}" id='hidden'/>
+				</div>
+			</div>
+		</div>
+			<div id="alert-user" class="alert alert-danger hidden" role="alert">
+				<h2>请上传图片文件，thanks </h2>
+			</div>
+	</div>
+</body>
+</html>
